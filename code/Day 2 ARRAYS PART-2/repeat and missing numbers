@@ -1,0 +1,24 @@
+pair<int, int> missingAndRepeating(vector<int> &arr, int n)
+{
+    // Write your code here
+    pair<int, int> ans;
+    int freq[n + 1] = {0};
+    int i;
+    int repeating = -1;
+    int missing = -1;
+    for (i = 0; i < n; i++)
+    {
+        freq[arr[i]]++;
+    }
+    for (i = 1; i <= n; i++)
+    {
+        if (freq[i] == 0)
+            missing = i;
+        else if (freq[i] == 2)
+            repeating = i;
+        if (missing != -1 && repeating != -1)
+            break;
+    }
+
+    return {missing, repeating};
+}
